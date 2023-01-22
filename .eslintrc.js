@@ -7,7 +7,6 @@ module.exports = {
   },
   extends: [
     'eslint:recommended',
-    'plugin:node/recommended',
     'plugin:react/recommended',
     'plugin:@typescript-eslint/recommended'
   ],
@@ -31,6 +30,9 @@ module.exports = {
   rules: {
     quotes: [ 'error', 'single' ],
     semi: [ 'error', 'always' ],
+    'react/react-in-jsx-scope': 'off',
+    'react/jsx-uses-react': 'off',
+    'react/jsx-filename-extension': [ 1, { 'extensions': [ '.js', '.jsx', '.ts', '.tsx' ] } ],
     'indent': [ 'error', 2 ],
     'space-before-function-paren': 0,
     'react/prop-types': 0,
