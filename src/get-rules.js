@@ -47,7 +47,23 @@ function getRules(settings) {
         {
           loader: 'sass-loader',
           options: {
-            sourceMap: true
+            sourceMap: true,
+            additionalData: (content) => {
+              if (settings.THEME_CORE) {
+                return `@import '${ settings.THEME_CORE }/index.scss'; ${ content }`;
+              }
+              return content;
+            },
+            sassOptions: (loaderContext) => {
+              const { rootContext } = loaderContext;
+              const includePaths = [];
+              if (settings.THEME_CORE) {
+                includePaths.push(`${rootContext}${settings.THEME_CORE}`);
+              }
+              return {
+                includePaths
+              };
+            }
           }
         }
       ]
