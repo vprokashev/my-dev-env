@@ -22,3 +22,9 @@ module.exports = {
   }
 };
 ```
+
+package.json
+```json
+"start": "my-dev-server --mode development",
+"build": "my-dev-server --mode production",
+```
