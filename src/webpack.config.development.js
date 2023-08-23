@@ -4,6 +4,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { getRules } = require('./get-rules');
 const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
+const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 
 module.exports = function (projectRoot, settings) {
   return {
@@ -76,6 +77,12 @@ module.exports = function (projectRoot, settings) {
       new webpack.IgnorePlugin({
         resourceRegExp: /^\.\/locale$/,
         contextRegExp: /moment$/
+      }),
+      new ForkTsCheckerWebpackPlugin({
+        async: true,
+        typescript: {
+          configFile: settings.TS_CONFIG_PATH
+        }
       })
     ]
   };
