@@ -16,7 +16,8 @@ function getBabelRcOptions() {
         {
           runtime: 'automatic'
         }
-      ]
+      ],
+      '@babel/preset-typescript'
     ]
   };
 }

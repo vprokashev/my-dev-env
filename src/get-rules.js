@@ -4,20 +4,7 @@ const { getBabelRcOptions } = require('./babelrc');
 function getRules(settings) {
   return [
     {
-      test: /\.(ts|tsx)$/,
-      exclude: /node_modules/,
-      use: [
-        {
-          loader: 'babel-loader',
-          options: getBabelRcOptions()
-        },
-        {
-          loader: 'ts-loader'
-        }
-      ]
-    },
-    {
-      test: /\.js$/,
+      test: /\.(ts|tsx|js|jsx)$/,
       exclude: /node_modules/,
       use: [
         {
