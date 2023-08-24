@@ -1,4 +1,6 @@
 # my-dev-env
+![ESLint](https://github.com/vprokashev/my-dev-env/actions/workflows/eslint.yml/badge.svg)  
+
 settings.js example
 ```js
 const path = require('path');

@@ -10,7 +10,7 @@
     "npm": ">=8"
   },
   "scripts": {
-    "test": "npx eslint --ext .js,.jsx,.ts,.tsx ./src"
+    "eslint": "npx eslint --ext .js ./src"
   },
   "repository": {
     "type": "git",
