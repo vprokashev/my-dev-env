@@ -33,7 +33,7 @@ module.exports = {
     'react/react-in-jsx-scope': 'off',
     'react/jsx-uses-react': 'off',
     'react/jsx-filename-extension': [ 1, { 'extensions': [ '.js', '.jsx', '.ts', '.tsx' ] } ],
-    'indent': [ 'error', 2 ],
+    indent: [ 'error', 2, { SwitchCase: 1 } ],
     'space-before-function-paren': 0,
     'react/prop-types': 0,
     'react/jsx-handler-names': 0,
