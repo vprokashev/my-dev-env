@@ -25,8 +25,29 @@ module.exports = {
 };
 ```
 
-package.json
+package.json scripts
 ```json
 "start": "my-dev-server --mode development",
 "build": "my-dev-server --mode production",
+```
+package.json dependencies
+```json
+"my-dev-env": "github:vprokashev/my-dev-env",
+```
+eslint
+```js
+module.exports = {
+  'extends': [ './node_modules/my-dev-env/.eslintrc.js' ]
+};
+```
+router
+```js
+const router = require('express').Router();
+const { errorHandler } = require('./middleware/error-handler');
+
+router
+  .use('/path', require('./path'))
+  .use(errorHandler);
+
+module.exports = router;
 ```
