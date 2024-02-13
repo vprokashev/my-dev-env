@@ -102,7 +102,7 @@ function getRules(settings) {
       ]
     },
     {
-      test: /\.svg/,
+      test: /\.(svg|frag|vert|glslv|glslf|tese|geom|comp)$/,
       type: 'asset/source'
     }
   ];
