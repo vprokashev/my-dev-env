@@ -33,9 +33,9 @@ module.exports = function (projectRoot, settings) {
             name: 'vendor',
             chunks: 'all',
             filename: '[name]-[chunkhash].js'
-          },
-        },
-      },
+          }
+        }
+      }
     },
     entry: {
       bundle: [
