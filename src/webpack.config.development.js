@@ -22,7 +22,7 @@ module.exports = function (projectRoot, settings) {
     },
     output: {
       filename: '[name].js',
-      chunkFilename: '[name]-[id].chunk.js',
+      chunkFilename: '[name]-[chunkhash].chunk.js',
       publicPath: settings.WEBPACK_PUBLIC_PATH,
       path: settings.WEBPACK_PATH,
       library: '[name]'
