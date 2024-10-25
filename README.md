@@ -1,5 +1,5 @@
 # my-dev-env
-![ESLint](https://github.com/vprokashev/my-dev-env/actions/workflows/eslint.yml/badge.svg)  
+![ESLint](https://github.com/vprokashev/my-dev-env/actions/workflows/eslint.yml/badge.svg)
 
 settings.js example
 ```js
@@ -27,18 +27,36 @@ module.exports = {
 
 package.json scripts
 ```json
-"start": "my-dev-server --mode development",
-"build": "my-dev-server --mode production",
+{
+  "scripts": {
+    "start": "my-dev-server --mode development",
+    "build": "my-dev-server --mode production"
+  }
+}
 ```
 package.json dependencies
 ```json
-"my-dev-env": "github:vprokashev/my-dev-env",
+{
+  "dependencies": {
+    "my-dev-env": "github:vprokashev/my-dev-env#v2"
+  }
+}
 ```
-eslint
+eslint (eslint.config.js)
 ```js
-module.exports = {
-  'extends': [ './node_modules/my-dev-env/.eslintrc.js' ]
-};
+import { default as myDevEnvConfig } from 'my-dev-env/eslint.config.js';
+
+export default [
+  ...myDevEnvConfig,
+  {
+    ignores: [
+      'eslint.config.js',
+      'node_modules/*',
+      'tmp/*'
+    ]
+  }
+];
+
 ```
 router
 ```js
