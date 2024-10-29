@@ -27,15 +27,32 @@ module.exports = function (projectRoot, settings) {
         new TerserJSPlugin({})
       ],
       splitChunks: {
+        chunks: 'all',
+        minSize: 20000,
+        maxSize: 60000,
+        minChunks: 1,
+        maxAsyncRequests: 30,
+        maxInitialRequests: 30,
+        automaticNameDelimiter: '-',
         cacheGroups: {
           vendor: {
             test: /[\\/]node_modules[\\/]/,
-            name: 'vendor',
+            name: 'vendors',
             chunks: 'all',
+            priority: -10,
+            filename: '[name]-[chunkhash].js'
+          },
+          common: {
+            test: /[\\/]src[\\/]common[\\/]/, // Путь до общей логики
+            name: 'common',
+            minChunks: 2,
+            chunks: 'all',
+            priority: -20,
             filename: '[name]-[chunkhash].js'
           }
         }
-      }
+      },
+      runtimeChunk: 'single'
     },
     entry: {
       bundle: [
