@@ -22,7 +22,7 @@ module.exports = function (projectRoot, settings) {
     },
     output: {
       filename: '[name].js',
-      chunkFilename: '[name]-[id].chunk.js',
+      chunkFilename: '[name]-[chunkhash].chunk.js',
       publicPath: settings.WEBPACK_PUBLIC_PATH,
       path: settings.WEBPACK_PATH,
       library: '[name]'
@@ -42,6 +42,7 @@ module.exports = function (projectRoot, settings) {
       extensions: [
         '.js',
         '.jsx',
+        '.mjs',
         '.scss',
         '.sass',
         '.json',
@@ -55,10 +56,10 @@ module.exports = function (projectRoot, settings) {
         new TsconfigPathsPlugin({ configFile: settings.TS_CONFIG_PATH })
       ]
     },
-    // Use this section when developing locally with `npm link` command
     // resolveLoader: {
     //   modules: [
-    //     path.join(__dirname, '..', './node_modules')
+    //     path.join(__dirname, '..', './node_modules'),
+    //     path.join(__dirname, '../../', './node_modules')
     //   ]
     // },
     plugins: [

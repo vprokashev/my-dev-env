@@ -51,10 +51,10 @@ async function spawnChild(
     data += chunk;
   }
 
-  let error = '';
-  for await (const chunk of child.stderr) {
-    error += chunk;
-  }
+  // let error = '';
+  // for await (const chunk of child.stderr) {
+  //   error += chunk;
+  // }
 
   // BUG: "npm outdated" return code 1 due to warnings
   // const exitCode = await new Promise((resolve) => {

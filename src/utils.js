@@ -2,7 +2,7 @@ function moduleIsAvailable (path) {
   try {
     require.resolve(path);
     return true;
-  } catch (e) {
+  } catch {
     return false;
   }
 }

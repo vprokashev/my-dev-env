@@ -1,5 +1,5 @@
 # my-dev-env
-![ESLint](https://github.com/vprokashev/my-dev-env/actions/workflows/eslint.yml/badge.svg)  
+![ESLint](https://github.com/vprokashev/my-dev-env/actions/workflows/eslint.yml/badge.svg)
 
 settings.js example
 ```js
@@ -14,7 +14,6 @@ module.exports = {
   TS_CONFIG_PATH: path.join(__dirname, './tsconfig.json'),
   DEV_PORT: '2023',
   REPORT_TARGET: path.join(__dirname, './tmp/report.html'),
-  THEME_CORE: '/styles/core',
   stub: {
     ROUTER: null,
     PATH: '/api/v1'
@@ -27,18 +26,36 @@ module.exports = {
 
 package.json scripts
 ```json
-"start": "my-dev-server --mode development",
-"build": "my-dev-server --mode production",
+{
+  "scripts": {
+    "start": "my-dev-server --mode development",
+    "build": "my-dev-server --mode production"
+  }
+}
 ```
 package.json dependencies
 ```json
-"my-dev-env": "github:vprokashev/my-dev-env",
+{
+  "dependencies": {
+    "my-dev-env": "github:vprokashev/my-dev-env#v2"
+  }
+}
 ```
-eslint
+eslint (eslint.config.js)
 ```js
-module.exports = {
-  'extends': [ './node_modules/my-dev-env/.eslintrc.js' ]
-};
+import { default as myDevEnvConfig } from 'my-dev-env/eslint.config.js';
+
+export default [
+  ...myDevEnvConfig,
+  {
+    ignores: [
+      'eslint.config.js',
+      'node_modules/*',
+      'tmp/*'
+    ]
+  }
+];
+
 ```
 router
 ```js
@@ -50,4 +67,22 @@ router
   .use(errorHandler);
 
 module.exports = router;
+```
+import styles
+```js
+import './style/index.scss';
+import * as style from './product.module.scss';
+```
+global.d.ts
+```typescript
+interface LazyStyle {
+  [ className: string ]: string;
+  use: () => void;
+  unuse: () => void;
+}
+
+declare module '*.module.scss' {
+  const source: LazyStyle;
+  export = source;
+}
 ```
