@@ -17,10 +17,7 @@ function getRules(settings) {
       test: /\.module\.s([ac])ss$/,
       use: [
         {
-          loader: 'style-loader',
-          options: {
-            injectType: 'lazyStyleTag'
-          }
+          loader: 'style-loader'
         },
         {
           loader: 'css-loader',
