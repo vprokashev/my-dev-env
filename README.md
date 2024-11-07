@@ -73,3 +73,16 @@ import styles
 import './style/index.scss';
 import * as style from './product.module.scss';
 ```
+global.d.ts
+```typescript
+interface LazyStyle {
+  [ className: string ]: string;
+  use: () => void;
+  unuse: () => void;
+}
+
+declare module '*.module.scss' {
+  const source: LazyStyle;
+  export = source;
+}
+```
