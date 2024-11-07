@@ -42,6 +42,7 @@ module.exports = function (projectRoot, settings) {
       extensions: [
         '.js',
         '.jsx',
+        '.mjs',
         '.scss',
         '.sass',
         '.json',
@@ -55,12 +56,12 @@ module.exports = function (projectRoot, settings) {
         new TsconfigPathsPlugin({ configFile: settings.TS_CONFIG_PATH })
       ]
     },
-    resolveLoader: {
-      modules: [
-        path.join(__dirname, '..', './node_modules'),
-        path.join(__dirname, '../../', './node_modules')
-      ]
-    },
+    // resolveLoader: {
+    //   modules: [
+    //     path.join(__dirname, '..', './node_modules'),
+    //     path.join(__dirname, '../../', './node_modules')
+    //   ]
+    // },
     plugins: [
       new webpack.DefinePlugin({
         'global.IS_BROWSER': true,
