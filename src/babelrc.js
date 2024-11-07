@@ -6,21 +6,11 @@ function getBabelRcOptions() {
       [
         '@babel/plugin-transform-runtime',
         {
-          corejs: 3,
-          helpers: true,
-          regenerator: true,
-          useESModules: true
+          corejs: 3
         }
       ]
     ],
     presets: [
-      [
-        '@babel/preset-env',
-        {
-          targets: '> 0.25%, not dead',
-          useBuiltIns: false
-        }
-      ],
       [
         '@babel/preset-react',
         {
