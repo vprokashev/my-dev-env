@@ -14,7 +14,6 @@ module.exports = {
   TS_CONFIG_PATH: path.join(__dirname, './tsconfig.json'),
   DEV_PORT: '2023',
   REPORT_TARGET: path.join(__dirname, './tmp/report.html'),
-  THEME_CORE: '/styles/core',
   stub: {
     ROUTER: null,
     PATH: '/api/v1'

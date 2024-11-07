@@ -1,31 +1,6 @@
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const { getBabelRcOptions } = require('./babelrc');
 
-function sassLoader (settings) {
-  return {
-    loader: 'sass-loader',
-    options: {
-      sourceMap: true,
-      additionalData: (content) => {
-        if (settings.THEME_CORE) {
-          return `@import '${ settings.THEME_CORE }/index.scss'; ${ content }`;
-        }
-        return content;
-      },
-      sassOptions: (loaderContext) => {
-        const { rootContext } = loaderContext;
-        const includePaths = [];
-        if (settings.THEME_CORE) {
-          includePaths.push(`${rootContext}${settings.THEME_CORE}`);
-        }
-        return {
-          includePaths
-        };
-      }
-    }
-  };
-}
-
 function getRules(settings) {
   return [
     {
@@ -56,7 +31,13 @@ function getRules(settings) {
             sourceMap: true
           }
         },
-        sassLoader(settings)
+        {
+          loader: 'sass-loader',
+          options: {
+            api: 'legacy',
+            sourceMap: true
+          }
+        }
       ]
     },
     {
@@ -83,7 +64,13 @@ function getRules(settings) {
             root: settings.WEBPACK_CONTEXT
           }
         },
-        sassLoader(settings)
+        {
+          loader: 'sass-loader',
+          options: {
+            api: 'legacy',
+            sourceMap: true
+          }
+        }
       ]
     },
     {

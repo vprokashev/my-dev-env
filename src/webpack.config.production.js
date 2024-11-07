@@ -69,12 +69,12 @@ module.exports = function (projectRoot, settings) {
         new TsconfigPathsPlugin({ configFile: settings.TS_CONFIG_PATH })
       ]
     },
-    // Use this section when developing locally with `npm link` command
-    // resolveLoader: {
-    //   modules: [
-    //     path.join(__dirname, '..', './node_modules')
-    //   ]
-    // },
+    resolveLoader: {
+      modules: [
+        path.join(__dirname, '..', './node_modules'),
+        path.join(__dirname, '../../', './node_modules')
+      ]
+    },
     plugins: [
       new webpack.DefinePlugin({
         'global.IS_BROWSER': true,
