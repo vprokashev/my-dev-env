@@ -68,3 +68,8 @@ router
 
 module.exports = router;
 ```
+import styles
+```js
+import './style/index.scss';
+import * as style from './product.module.scss';
+```
