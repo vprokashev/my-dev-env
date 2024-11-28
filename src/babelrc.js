@@ -12,6 +12,16 @@ function getBabelRcOptions() {
     ],
     presets: [
       [
+        '@babel/preset-env',
+        {
+          targets: {
+            browsers: '> 0.5%, not IE 11, not dead'
+          },
+          // Use @babel/plugin-transform-runtime for polyfills
+          useBuiltIns: false
+        }
+      ],
+      [
         '@babel/preset-react',
         {
           runtime: 'automatic'
@@ -21,6 +31,7 @@ function getBabelRcOptions() {
     ]
   };
 }
+
 module.exports = {
   getBabelRcOptions
 };
